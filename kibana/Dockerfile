@@ -8,5 +8,6 @@ EXPOSE 80
 ENV AUTH_HTPASSWD admin:$apr1$ah53ygoB$Meiax10m3fpDvvqzNFruU.
 COPY default.conf /etc/nginx/conf.d/
 COPY entrypoint.sh /
+RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
