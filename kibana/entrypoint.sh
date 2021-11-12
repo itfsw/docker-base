@@ -4,4 +4,4 @@
 echo "$AUTH_HTPASSWD" > /etc/nginx/conf.d/htpasswd
 
 # 启动kibana和Nginx
-service nginx start && /docker-entrypoint.sh kibana
+/usr/sbin/nginx -g 'daemon on; master_process on;' && /docker-entrypoint.sh kibana
