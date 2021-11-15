@@ -1,7 +1,10 @@
 FROM kibana:7.9.3
 
+# 切换到root用户
+USER root
+
 # 防止有人错误映射了5601端口
-RUN sed -i "s/server.host: '0'/server.host: '127.0.0.1'/g" /etc/kibana/kibana.yml
+RUN sed -i 's/server.host: "0"/server.host: "127.0.0.1"/g' /usr/share/kibana/config/kibana.yml
 
 # 安装Nginx
 RUN yum update && yum install -y nginx
@@ -20,5 +23,8 @@ RUN chmod +x /entrypoint.sh
 
 # 执行清理
 RUN	yum clean all && rm -rf /var/cache/yum/*
+
+# 切换为kibana用户
+USER kibana
 
 ENTRYPOINT ["/entrypoint.sh"]
