@@ -1,4 +1,4 @@
-FROM kibana:5.3
+FROM kibana:7.9.3
 
 # 防止有人错误映射了5601端口
 RUN sed -i "s/server.host: '0'/server.host: '127.0.0.1'/g" /etc/kibana/kibana.yml
