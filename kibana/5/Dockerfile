@@ -7,9 +7,14 @@ RUN sed -i "s/server.host: '0.0.0.0'/server.host: '127.0.0.1'/g" /etc/kibana/kib
 RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests -y nginx
 EXPOSE 80
 
-# 环境变量和启动命令
-ENV AUTH_HTPASSWD admin:\$apr1\$ah53ygoB\$Meiax10m3fpDvvqzNFruU.
+# 环境变量,认证文件内容
+ENV AUTH_HTPASSWD admin:\$apr1\$iyh1Sj5.\$kVFjc2Nw9xrbz5rVdzPEC.
+
+# Nginx配置文件
 COPY kibana.conf /etc/nginx/conf.d/
+RUN rm -f /etc/nginx/sites-enabled/default
+
+# 启动脚本，把认证环境变量写入文件，启动Nginx和kibana
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
