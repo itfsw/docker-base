@@ -1,7 +1,7 @@
 FROM kibana:5.3
 
 # 防止有人错误映射了5601端口
-RUN sed -i 's/0.0.0.0/127.0.0.1/g' /etc/kibana/kibana.yml
+RUN sed -i "s/server.host: '0.0.0.0'/server.host: '127.0.0.1'/g" /etc/kibana/kibana.yml
 
 # 安装Nginx
 RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests -y nginx
