@@ -7,7 +7,7 @@ USER root
 RUN sed -i 's/server.host: "0"/server.host: "127.0.0.1"/g' /usr/share/kibana/config/kibana.yml
 
 # 安装Nginx
-RUN yum -y install nginx
+RUN yum install -y epel-release && yum install -y nginx
 EXPOSE 80
 
 # 环境变量,认证文件内容
