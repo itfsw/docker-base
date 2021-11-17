@@ -19,7 +19,7 @@ RUN rm -f /etc/nginx/sites-enabled/default
 
 # 启动脚本，把认证环境变量写入文件，启动Nginx和kibana
 COPY entrypoint.sh /
-RUN chmod +x /entrypoint.sh
+RUN chown kibana /entrypoint.sh && chmod +x /entrypoint.sh
 
 # 执行清理
 RUN	yum clean all && rm -rf /var/cache/yum/*
