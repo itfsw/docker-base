@@ -20,9 +20,6 @@ RUN rm -f /etc/nginx/sites-enabled/default
 
 # 启动脚本，把认证环境变量写入文件，启动Nginx和kibana
 COPY entrypoint.sh /
-RUN chmod +x /entrypoint.sh && chown kibana /entrypoint.sh
-
-# 切换到kibana用户
-USER kibana
+RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
