@@ -24,7 +24,4 @@ RUN chown kibana /entrypoint.sh && chmod +x /entrypoint.sh
 # 执行清理
 RUN	yum clean all && rm -rf /var/cache/yum/*
 
-# 切换为kibana用户
-USER kibana
-
 ENTRYPOINT ["/entrypoint.sh"]
