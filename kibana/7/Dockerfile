@@ -16,7 +16,7 @@ ENV AUTH_HTPASSWD admin:\$apr1\$iyh1Sj5.\$kVFjc2Nw9xrbz5rVdzPEC.
 
 # Nginx配置文件
 COPY kibana.conf /etc/nginx/conf.d/
-RUN rm -f /etc/nginx/sites-enabled/default && chown -R kibana /etc/nginx/conf.d/
+RUN rm -f /etc/nginx/sites-enabled/default
 
 # 启动脚本，把认证环境变量写入文件，启动Nginx和kibana
 COPY entrypoint.sh /
