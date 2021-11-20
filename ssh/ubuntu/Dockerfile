@@ -4,9 +4,10 @@ FROM ubuntu:22.04
 RUN sed -i 's#archive.ubuntu.com#mirrors.aliyun.com#g' /etc/apt/sources.list
 
 # 安装软件包
-RUN yum install openssh-server net-tools passwd -y && \
-    ssh-keygen -A && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update \
+    && apt-get install -y openssh-server net-tools passwd \
+    && ssh-keygen -A \
+    && rm -rf /var/lib/apt/lists/*
 
 # 启动脚本
 ADD docker-entrypoint.sh /
