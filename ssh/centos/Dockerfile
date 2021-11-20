@@ -1,4 +1,4 @@
-FROM centos:centos7
+FROM centos:centos8
 
 # 安装软件包
 RUN yum install openssh-server net-tools passwd -y \
