@@ -12,7 +12,8 @@ RUN yum install openssh-server net-tools passwd -y && \
 ADD docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 
-# 环境变量
+# 环境变量端口信息
 ENV PASSWORD root
+EXPOSE 22
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
