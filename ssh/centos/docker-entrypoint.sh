@@ -1,6 +1,6 @@
 #!/bin/sh
 
 # change password
-echo root:"$PASSWORD" | chpasswd
+echo "$PASSWORD" | passwd --stdin root
 
 /usr/sbin/sshd -D
