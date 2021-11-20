@@ -5,8 +5,9 @@ RUN sed -i 's#archive.ubuntu.com#mirrors.aliyun.com#g' /etc/apt/sources.list
 
 # 安装软件包
 RUN apt-get update \
-    && apt-get install -y openssh-server net-tools passwd \
+    && apt-get install -y openssh-server net-tools chpasswd \
     && ssh-keygen -A \
+    && mkdir /run/sshd \
     && rm -rf /var/lib/apt/lists/*
 
 # 启动脚本
